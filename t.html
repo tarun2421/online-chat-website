@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Data with AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Save Data with AJAX</h2>
+    <input type="text" id="dataInput" placeholder="Enter Data">
+    <button onclick="saveData()">Save</button>
+    <div id="message"></div>
+
+    <script>
+        function saveData() {
+            var data = $('#dataInput').val();
+            $.ajax({
+                type: "POST",
+                url: "save_data.php",
+                data: { data: data },
+                success: function(response) {
+                    $('#message').html(response);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
